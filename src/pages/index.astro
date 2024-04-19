@@ -12,42 +12,78 @@ import "@fontsource-variable/noto-serif-display";
   </head>
   <body>
     <main>
-      <span>Magallanes</span>
-      <span>mah-gah-YAH-nes</span>
-      <span>[ma.ɣaˈʝa.nes]</span>
+      <section class="tooltip">
+        <span>Magallanes </span>
+        <div class="tooltiptext">
+          <span>mah-gah-YAH-nes</span>
+          <span>[ma.ɣaˈʝa.nes]</span>
+        </div>
+      </section>
     </main>
   </body>
+
+  <style>
+    main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.75rem;
+      font-family: "Noto Serif Display Variable", serif;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 3rem;
+    }
+
+    .tooltip:hover {
+      text-decoration: dashed;
+      text-decoration-line: underline;
+      text-decoration-thickness: 0.175rem;
+    }
+
+    .tooltiptext {
+      font-size: 1.125rem;
+      visibility: hidden;
+      display: grid;
+      width: fit-content;
+      background-color: #444;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1;
+      top: 95%;
+      right: 50%;
+      transform: translateX(50%) translateY(-10px);
+      width: max-content;
+      opacity: 0;
+      transition:
+        opacity 0.5s,
+        transform 0.5s;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(50%) translateY(0);
+    }
+
+    .tooltiptext::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      /* margin-left: -5px; */
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #444 transparent;
+    }
+  </style>
 </html>
-
-<style>
-  main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0.75rem;
-    font-family: "Noto Serif Display Variable", serif;
-  }
-
-  main > span:first-child {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
-  main > span:first-child:hover {
-    text-decoration: underline;
-    text-decoration-style: dashed;
-  }
-
-  main > span:nth-child(2) {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  main > span:last-child {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-</style>
