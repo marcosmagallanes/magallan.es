@@ -1,0 +1,100 @@
+---
+import "@fontsource-variable/noto-serif-display";
+import Slide from "../components/Slide.astro";
+import Scroll from "../components/Scroll.astro";
+---
+
+<main>
+  <section class="relative">
+    <div>
+      <div onclick="" class="tooltip">
+        <span class="text-5xl">Magallanes</span>
+        <div class="tooltiptext">
+          <span>mah-gah-YAH-nes</span>
+          <span>[ma.ɣaˈʝa.nes]</span>
+        </div>
+      </div>
+    </div>
+    <Scroll />
+  </section>
+
+  <Slide> The last name Magallanes has roots in Spain and Portugal.</Slide>
+
+  <Slide>
+    The name gained prominence in the 16th century due to the famous Portuguese
+    explorer <div onclick="" class="tooltip">
+      <span class="font-bold">Ferdinand Magellan,</span>
+      <div class="tooltiptext">
+        <span>Portuguese: Fernão de Magalhães</span>
+      </div>
+    </div> who led the first expedition to circumnavigate the globe.
+  </Slide>
+
+  <Slide>
+    Magellan influenced the popularity of the surname in Spain and Portugal, and
+    also led to its spread in colonies of those countries.
+  </Slide>
+</main>
+
+<style is:global lang="postcss">
+  main {
+    font-family: "Noto Serif Display Variable", serif;
+    @apply h-screen w-full;
+    @apply grid;
+    @apply text-center;
+
+    @apply snap-y snap-mandatory;
+    @apply scroll-smooth overflow-y-scroll;
+  }
+
+  main > section {
+    @apply snap-center;
+    @apply h-[100vh];
+    @apply p-12;
+  }
+
+  main > section > div {
+    @apply bg-gray-200 rounded-2xl;
+    @apply h-full w-full;
+    @apply flex items-center justify-center;    
+    @apply text-4xl;
+    @apply p-12
+  }
+
+  .tooltip {
+    @apply cursor-pointer;
+    @apply relative;
+    @apply inline;
+    @apply italic;
+  }
+
+  .tooltip:hover {
+    @apply underline decoration-dashed decoration-2;
+  }
+
+  .tooltiptext {
+    @apply text-xl;
+    @apply grid;
+    @apply w-max;
+    @apply bg-gray-800 rounded-md;
+    @apply text-white text-center;
+    @apply p-2.5;
+    @apply absolute top-full right-[50%];
+
+    @apply invisible opacity-0;
+    @apply translate-x-[50%] translate-y-[-1.5rem];
+    @apply transition duration-500;
+  }
+
+  .tooltip:hover .tooltiptext {
+    @apply visible opacity-100;
+    @apply translate-x-[50%] translate-y-[0.5rem];
+  }
+
+  .tooltiptext::after {
+    @apply content-[''];
+    @apply absolute bottom-[100%] left-[50%];
+    @apply border-4 border-b-gray-800 border-solid;
+    
+  }
+</style>

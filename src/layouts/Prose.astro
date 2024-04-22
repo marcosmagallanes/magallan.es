@@ -1,0 +1,91 @@
+---
+import Base from "./Base.astro";
+
+import "@fontsource-variable/noto-serif-display";
+import "@fontsource/roboto";
+---
+
+<Base>
+  <main>
+    <slot />
+  </main>
+</Base>
+
+<style is:global>
+  h1 {
+    font-family: "Noto Serif Display Variable", sans-serif;
+    font-size: 1.8rem;
+  }
+  :not(h1) {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+  }
+  main {
+    height: 100dvh;
+    width: 100%;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
+  .slide-wrapper {
+    display: grid;
+    place-items: center;
+    scroll-snap-align: center;
+    padding: 1rem;
+    height: calc(100dvh - 2rem);
+  }
+  .slide {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 60%;
+    width: 100%;
+    max-width: 768px;
+    padding: 1rem;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  }
+
+  .tooltip-wrapper {
+    position: relative;
+  }
+
+  .tooltip-wrapper:hover .tooltip-trigger {
+    cursor: help;
+    text-decoration: underline dashed 2px;
+  }
+
+  .tooltip {
+    display: none;
+    border: 1px solid gray;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    z-index: 1;
+    background-color: rgb(31 41 55);
+    color: aliceblue;
+  }
+
+  .tooltip p {
+    font-size: 0.9rem;
+  }
+
+  .tooltip-wrapper:hover .tooltip {
+    display: block;
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    border: 5px solid transparent;
+    border-bottom: 5px solid rgb(31 41 55);
+  }
+</style>
